@@ -25,7 +25,15 @@ app.set('view engine', 'ejs');
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req,res)=> {
-    res.end("root requested!")
+    res.redirect('/trips')
+})
+
+app.use('/trips', tripRouter);
+
+app.use((req, res, next) => {
+    var err = Error(`Resource Not Found ${req.url}`)
+    err.status = 404 ;
+    next(err);
 })
 
 app.use((err, req, res, next) => {

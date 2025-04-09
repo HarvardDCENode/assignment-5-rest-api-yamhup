@@ -1,30 +1,28 @@
 {
-  "name": "assignment-4-express-routing-mongodb-and-mongoose-new-yamhup",
+  "name": "assignment-5-rest-api-yamhup",
   "version": "1.0.0",
-  "description": "Assignment 4",
+  "description": "Week 5 assignment REST APIs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/www",
-    "start-dev": "nodemon --inspect bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup.git"
+    "url": "git+https://github.com/HarvardDCENode/assignment-5-rest-api-yamhup.git"
   },
-  "author": "Yu Ching",
+  "author": "Yu-ching",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup/issues"
+    "url": "https://github.com/HarvardDCENode/assignment-5-rest-api-yamhup/issues"
   },
-  "homepage": "https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup#readme",
+  "homepage": "https://github.com/HarvardDCENode/assignment-5-rest-api-yamhup#readme",
   "dependencies": {
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
-    "express": "^4.21.2",
+    "express": "^5.1.0",
     "express-flash": "^0.0.2",
     "express-session": "^1.18.1",
-    "mongoose": "^8.12.1",
+    "mongoose": "^8.13.2",
     "multer": "^1.4.5-lts.2"
   },
   "devDependencies": {

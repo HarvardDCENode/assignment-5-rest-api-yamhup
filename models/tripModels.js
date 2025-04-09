@@ -27,4 +27,4 @@ schema.pre('save', function(next){
     next();
 });
 
-module.exports = mongoose.mode('Trip', schema) 
+module.exports = mongoose.model('Trip', schema) 

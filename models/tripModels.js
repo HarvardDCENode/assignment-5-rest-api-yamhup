@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema();
 
-const schema = new  Schema({
+const Schema = mongoose.Schema;
+
+const schema = new Schema({
     originalname: { type: String, required:true},
     mimetype: {type: String, required:true},
     filename:{type:String, required:true},

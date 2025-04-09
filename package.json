@@ -1,0 +1,33 @@
+{
+  "name": "assignment-4-express-routing-mongodb-and-mongoose-new-yamhup",
+  "version": "1.0.0",
+  "description": "Assignment 4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/www",
+    "start-dev": "nodemon --inspect bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup.git"
+  },
+  "author": "Yu Ching",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup/issues"
+  },
+  "homepage": "https://github.com/HarvardDCENode/assignment-4-express-routing-mongodb-and-mongoose-new-yamhup#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

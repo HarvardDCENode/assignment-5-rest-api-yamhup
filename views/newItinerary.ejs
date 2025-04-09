@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+
+	<h3>Create your new trip itinerary</h3>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<% if (flashMsgs.length > 0) { %>
+					<!--flatten the nested arrays from trip.js /create router-->
+					<% flashMsgs.forEach(flashMsg => { %>
+						<% flashMsg.forEach(msg => {%>
+							<div class="alert alert-danger" role="alert">
+								<strong>FLASH!</strong> <%= msg %>
+							</div>
+						<% }) %>
+					<% }) %>
+				<% } %>
+				<form method="POST" action="/trips" enctype="multipart/form-data">
+					<div class="mb-3">
+						<label for="username" class="form-label">Username</label>
+						<input class="form-control" name="username" type="text" placeholder="Enter your username" id="username">
+					</div>
+					<div class="mb-3">
+						<label for="title" class="form-label">Trip Title</label>
+						<input class="form-control" name="title" type="text" placeholder="Enter your trip title" id="title">
+					</div>
+					<div class="mb-3">
+						<label for="country" class="form-label">Travel country</label>
+						<input class="form-control" name="country" type="text" placeholder="Enter your travel country" id="country">
+						
+					</div>
+					<div class="mb-3">
+						<label for="city" class="form-label">Travel city</label>
+						<input class="form-control" name="city" type="text" placeholder="Enter your travel city" id="city">
+					</div>
+					<div class="mb-3">
+						<label for="content" class="form-label">Trip Content</label>
+						<textarea class="form-control" name="content"  placeholder="Enter your trip content" rows="20" id="content"></textarea>
+					</div>
+					<div  class="mb-3">
+						<label for="image" class="form-label">Trip Image</label>
+						<input class="form-control" name="image" type="file" id="image">
+					</div>
+					<button type="submit" class="btn btn-primary btn-sm">Submit trip itinerary</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</main>
+
+<%- include('partials/footer.ejs') %>

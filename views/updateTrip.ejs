@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+
+    <h3>Update your trip itinerary in updateTrip.ejs </h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form method="POST" action="/trips/<%=trip._id%>" enctype="multipart/form-data">
+                        <div class="mb-3 ">
+                            <label for="image" class="form-label d-block">Trip Image</label>
+                            <img src="<%= trip.imageurl %>"
+                            class="img-fluid"
+        					alt="Destination image">
+                            <input class="form-control" name="image" type="file" id="image">
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input class="form-control" name="username" type="text" value="<%= trip.username %>" id="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Trip Title</label>
+                            <input class="form-control" name="title" type="text" value="<%= trip.title %>" id="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Travel country</label>
+                            <input class="form-control" name="country" type="text" value="<%= trip.country %>" id="country">
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Travel city</label>
+                            <input class="form-control" name="city" type="text" value="<%= trip.city %>" id="city">
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Trip Content</label>
+                            <textarea class="form-control" name="content"   rows="10" id="content"><%= trip.content %></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm"> Update <%=trip.title %></button>
+                    </form>
+                </div>   
+            </div>        
+        </div>
+
+
+</main>            
+<%- include('partials/footer.ejs') %>

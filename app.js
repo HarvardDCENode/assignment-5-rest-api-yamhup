@@ -3,6 +3,7 @@ const path = require('path');
 const session = require('express-session');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const tripRouter = require('./routes/trips')
 
 const app = express();
 

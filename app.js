@@ -4,15 +4,17 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const tripRouter = require('./routes/trips')
+const apiRouter = require('./routes/api/api.trips')
+const imageController = require('./controllers/imageController');
 
-const app = express();
-
-//username and passwords are store in .env file
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.koj9l.mongodb.net/cscie31_assignment5?retryWrites=true&w=majority&appName=Cluster0`)
     .catch((err) => {
         console.error(`Database connection error: ${err}`)
         process.exit();
     })
+
+
+const app = express();
 
 // set up express-session middleware to enable session function for express-flash messages in trips.js file
 app.use(session({

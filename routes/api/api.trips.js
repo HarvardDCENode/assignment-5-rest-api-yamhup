@@ -13,7 +13,17 @@ const TripImageService = imageController.TripImageService;
 
 
 //read
-
+router.get('/', (req, res, next)=>{
+    TripImageService.list()
+    .then((images) => {
+        console.log(`API: List of trip images: ${images}`)
+        res.status(200);
+        res.set({'Content-type': 'application/json'})
+        res.send(JSON.stringify(images));
+    });
+    console.log('Done with get reading the tripImages data')
+    
+})
 //read a single trip
 
 //create a single trip

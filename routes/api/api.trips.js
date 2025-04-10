@@ -9,6 +9,8 @@ const upload = multer({
   fileFilter: imageController.imageFilter
 });
 
+const TripImageService = imageController.TripImageService;
+
 
 //read
 

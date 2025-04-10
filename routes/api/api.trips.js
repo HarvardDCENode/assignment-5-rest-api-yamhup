@@ -14,14 +14,18 @@ const TripImageService = imageController.TripImageService;
 
 //read
 router.get('/', (req, res, next)=>{
+    console.log('-----------In apiRouter--------------')
     TripImageService.list()
     .then((images) => {
-        console.log(`API: List of trip images: ${images}`)
+        console.log(`API: List of trip content and its images: ${images}`)
         res.status(200);
         res.set({'Content-type': 'application/json'})
         res.send(JSON.stringify(images));
-    });
-    console.log('Done with get reading the tripImages data')
+    }).catch((err)=>{
+        res.status(404);
+        res.end();
+    })
+    console.log('------------')
     
 })
 //read a single trip
@@ -32,5 +36,11 @@ router.get('/', (req, res, next)=>{
 
 //delete a single trip
 
+//error handling
+router.use(function(err, req, res, next){
+    console.error(err);
+    res.status(500);
+    res.end();
+});
 
 module.exports = router;

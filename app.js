@@ -35,7 +35,7 @@ app.get('/', (req,res)=> {
 
 app.use('/trips', tripRouter);
 
-app.use('api/images', apiRouter);
+app.use('/api/images', apiRouter);
 
 app.use((req, res, next) => {
     var err = Error(`Resource Not Found ${req.url}`)

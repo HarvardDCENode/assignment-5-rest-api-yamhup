@@ -9,25 +9,25 @@ const upload = multer({
   fileFilter: imageController.imageFilter
 });
 
-const TripImageService = imageController.TripImageService;
+const TripService = imageController.TripImageService;
 
 
 //read
+//http://localhost:8086/api/trips
 router.get('/', async(req, res, next)=>{
     console.log('-----------In apiRouter--------------')
-    TripImageService.list()
-    .then((images) => {
-        console.log(`API: List of trip content and tits images: ${images}`)
+    try{
+        const trips = await TripService.list()
+        console.log(`API: List of trip contents and trip images ${trips}`)
         res.status(200);
-        res.set({'Content-type': 'application/json'})
-        res.send(JSON.stringify(images));
-    }).catch((err)=>{
+        res.json(trips)
+    } catch (err){
+        console.error(`Error in retrieving trips from MongoDB, ${err}`)
         res.status(404);
         res.end();
-    })
-    console.log('------------')
-    
+    }
 })
+
 //read a single trip
 
 //create a single trip

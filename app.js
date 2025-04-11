@@ -34,7 +34,7 @@ app.get('/', (req,res)=> {
     res.redirect('/trips')
 })
 
-app.use('/api/images', apiRouter);//json 
+app.use('/api/trips', apiRouter);//json 
 app.use('/trips', tripRouter);//html 
 
 

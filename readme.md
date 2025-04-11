@@ -1,5 +1,26 @@
-# Assignment #5 - REST APIs
+#### Assignment #5 - REST APIs
 
-The description of this assignment can be found in Canvas at [Assignment #5](https://canvas.harvard.edu/courses/150064/assignments/906135) (Spring 2025)
 
-You should build your application in this repo cloned for you in Github Classroom. You'll submit your project and github URLs in Canvas.
+
+
+- After execute POST/PUT request in Postman to create or update a trip, visit http://localhost:8086/trips in the browser to see the new trip or the updated trip.
+<BR>
+![image](./public/images/browser.png)
+
+---
+
+**POST method In Postman**
+- Select 'form-data' in Body
+- add keys
+    - username (text)
+    - title (text)
+    - country (text)
+    - city (text)
+    - content (text)
+    - image (File)
+    - filename (text)
+- add value as text and upload the imageFile from your local computer
+
+<BR>
+
+![image](./public/images/post_method.png)

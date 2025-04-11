@@ -30,6 +30,7 @@ router.get('/', async(req, res, next)=>{
 //read a single trip
 
 //create a single trip
+// this formate is only work when using "form-data" POST method in Postman
 router.post('/', upload.single('image'),async(req, res, next) => {
     const path ='/static/images/' + req.file.filename
     const tripData = {

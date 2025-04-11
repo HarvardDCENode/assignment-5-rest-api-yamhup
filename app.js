@@ -8,9 +8,10 @@ const apiRouter = require('./routes/api/api.trips')
 const imageController = require('./controllers/imageController');
 
 mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB connected successfully!'))
     .catch((err) => {
         console.error(`Database connection error: ${err}`)
-        process.exit();
+        process.exit(1);
     })
 
 
@@ -33,9 +34,9 @@ app.get('/', (req,res)=> {
     res.redirect('/trips')
 })
 
-app.use('/trips', tripRouter);
+app.use('/api/images', apiRouter);//json 
+app.use('/trips', tripRouter);//html 
 
-app.use('/api/images', apiRouter);
 
 app.use((req, res, next) => {
     var err = Error(`Resource Not Found ${req.url}`)

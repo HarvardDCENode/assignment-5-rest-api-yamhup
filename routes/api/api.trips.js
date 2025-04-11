@@ -13,7 +13,7 @@ const TripImageService = imageController.TripImageService;
 
 
 //read
-router.get('/', (req, res, next)=>{
+router.get('/', async(req, res, next)=>{
     console.log('-----------In apiRouter--------------')
     TripImageService.list()
     .then((images) => {

@@ -2,21 +2,20 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const imageController = require('../../controllers/imageController');
+const TripService = imageController.TripService;
 const Trip = require('../../models/tripModels');
 const upload = multer({
   storage: imageController.storage,
   fileFilter: imageController.imageFilter
 });
 
-const TripService = imageController.TripService;
+
 
 
 //read all trips (http://localhost:8086/api/trips)
 router.get('/', async(req, res, next)=>{
-    console.log('-----------In apiRouter--------------');
     try{
         const trips = await TripService.list()
-        console.log(`In api.trips.js get route. List of trip contents and trip images ${trips}`);
         res.status(200);
         res.json(trips);
     } catch (err){
@@ -48,7 +47,6 @@ router.post('/', upload.single('image'),async(req, res, next) => {
     try {
         const trip = await TripService.create(tripData);
         res.json(trip);
-        console.log(`In api.trips.js post route. Successfully create a new trip" ${trip}`)
     } catch (err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
         //display error message in Postman Body

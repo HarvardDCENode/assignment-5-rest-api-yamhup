@@ -22,6 +22,7 @@ const imageFilter = function(req, file, cb) {
 class TripService {
     static async list(){
         const trips = await Trip.find({});
+        console.log(`Get all trips: ${trips}`);
         return trips;
     }
 
@@ -48,6 +49,7 @@ class TripService {
         const trip = await Trip.findById(id)
         trip.set(data)
         await trip.save();
+        console.log(`Successfully create a new trip" ${trip}`)
         return trip;
     }
 

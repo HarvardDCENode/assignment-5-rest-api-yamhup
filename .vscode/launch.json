@@ -8,6 +8,7 @@
         "skipFiles": [
           "<node_internals>/**"
         ],
+        // "program": "${workspaceFolder}/routes/api/api.trips.js",
         "program": "${workspaceFolder}/bin/www",
         "cwd": "${workspaceFolder}",
         "env": {

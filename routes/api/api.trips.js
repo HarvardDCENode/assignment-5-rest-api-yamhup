@@ -20,8 +20,8 @@ router.get('/', async(req, res, next)=>{
         res.json(trips);
     } catch (err){
         console.error(`Error in retrieving trips from MongoDB, ${err}`);
-        res.status(404);
-        res.end();
+        //display error message in Postman Body
+        res.status(500, json({error: 'Error in retrieving trips from MongoDB'}));
     }
 })
 
@@ -46,11 +46,11 @@ router.post('/', upload.single('image'),async(req, res, next) => {
 
     try {
         const trip = await TripService.create(tripData);
+        res.status(201);
         res.json(trip);
     } catch (err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
-        //display error message in Postman Body
-        res.status(500).json({error: 'Error in saving a new trip itinerary.'});
+        res.status(500).json({error: 'Error in saving a new trip itinerary to MongoDB.'});
         
     }
 });

@@ -28,8 +28,7 @@ router.get('/', async(req, res, next)=>{
 
 //read a single trip
 
-//create a single trip
-//this 
+// create a single trip with file upload
 router.post('/', upload.single('image'),async(req, res, next) => {
     const path ='/static/images/' + req.file.filename
     const tripData = {
@@ -52,10 +51,10 @@ router.post('/', upload.single('image'),async(req, res, next) => {
         console.log(`In api.trips.js post route. Successfully create a new trip" ${trip}`)
     } catch (err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
-        res.status(500);
-        res.end();
+        //display error message in Postman Body
+        res.status(500).json({error: 'Error in saving a new trip itinerary.'});
+        
     }
-    
 });
 //update a single trip
 

@@ -44,13 +44,11 @@ class TripService {
         return newTrip
     }
 
-    static update(id, data){
-        return Trip.findById(id)
-        .then((trip) => {
-            trip.set(data);
-            trip.save();
-            return trip;
-        });
+    static async update(id, data){
+        const trip = await Trip.findById(id)
+        trip.set(data)
+        await trip.save();
+        return trip;
     }
 
     static read(id){

@@ -1,5 +1,5 @@
 const multer = require('multer');
-const TripImage = require('../models/tripModels');
+const Trip = require('../models/tripModels');
 
 
 const storage = multer.diskStorage({
@@ -19,14 +19,14 @@ const imageFilter = function(req, file, cb) {
     }
 }
 
-class TripImageService {
+class TripService {
     static create(obj){
-        const image = new TripImage(obj);
+        const image = new Trip(obj);
         return image.save();
     }
 
     static update(id, data){
-        return TripImage.findById(id)
+        return Trip.findById(id)
         .then((image) => {
             image.set(data);
             image.save();
@@ -35,21 +35,21 @@ class TripImageService {
     }
 
     static read(id){
-        return TripImage.findById(id)
+        return Trip.findById(id)
         .then((image)=> {
             return image;
         });
     }
 
     static list(){
-        return TripImage.find({})
+        return Trip.find({})
             .then((images)=>{
                 return images;
             });
     }
 
     static delete(){
-        return TripImage.deleteOne({_id: id})
+        return Trip.deleteOne({_id: id})
         .then((obj)=> {
             return obj;
         })
@@ -58,4 +58,4 @@ class TripImageService {
 
 module.exports.storage = storage;
 module.exports.imageFilter = imageFilter;
-module.exports.TripImageService = TripImageService ;
+module.exports.TripService = TripService ;

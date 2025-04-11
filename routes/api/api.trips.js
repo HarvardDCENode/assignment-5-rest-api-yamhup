@@ -9,7 +9,7 @@ const upload = multer({
   fileFilter: imageController.imageFilter
 });
 
-const TripService = imageController.TripImageService;
+const TripService = imageController.TripService;
 
 
 //read all trips (http://localhost:8086/api/trips)

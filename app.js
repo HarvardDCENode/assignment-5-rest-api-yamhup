@@ -1,13 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const tripRouter = require('./routes/trips')
 const apiRouter = require('./routes/api/api.trips')
 const imageController = require('./controllers/imageController');
 
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@cluster0.koj9l.mongodb.net/cscie31_assignment5?retryWrites=true&w=majority&appName=Cluster0`)
+mongoose.connect(process.env.MONGO_URI)
     .catch((err) => {
         console.error(`Database connection error: ${err}`)
         process.exit();

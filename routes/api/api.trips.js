@@ -17,7 +17,7 @@ router.get('/', async(req, res, next)=>{
     console.log('-----------In apiRouter--------------')
     TripImageService.list()
     .then((images) => {
-        console.log(`API: List of trip content and its images: ${images}`)
+        console.log(`API: List of trip content and tits images: ${images}`)
         res.status(200);
         res.set({'Content-type': 'application/json'})
         res.send(JSON.stringify(images));

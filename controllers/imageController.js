@@ -20,9 +20,28 @@ const imageFilter = function(req, file, cb) {
 }
 
 class TripService {
-    static create(obj){
-        const trip= new Trip(obj);
-        return trip.save();
+    static async list(){
+        const trips = await Trip.find({});
+        return trips;
+    }
+
+    static async create(obj){
+        const path ='/static/images/' + obj.filename
+        const trip = new Trip({
+            originalname: obj.originalname,
+            mimetype: obj.mimetype,
+            filename: obj.filename,
+            imageurl: path,
+            //convert file size into KB
+            size: obj.size / 1024 |0, 
+            username: obj.username,
+            title: obj.title,
+            country: obj.country,
+            city: obj.city,
+            content: obj.content
+        });
+        const  newTrip = await trip.save();
+        return newTrip
     }
 
     static update(id, data){
@@ -41,12 +60,7 @@ class TripService {
         });
     }
 
-    static list(){
-        return Trip.find({})
-            .then((trips)=>{
-                return trips;
-            });
-    }
+   
 
     static delete(){
         return Trip.deleteOne({_id: id})

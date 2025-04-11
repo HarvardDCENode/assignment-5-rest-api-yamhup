@@ -48,12 +48,12 @@ router.post('/', async(req, res, next) => {
 
     try {
         const trip = await TripService.create(tripData);
-        res.send(200);
+        
         console.log('-----Create a trip json format-------')
         res.json(trip);
     } catch (err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
-        res.status(404);
+        res.status(500);
         res.end();
     }
     

@@ -21,30 +21,30 @@ const imageFilter = function(req, file, cb) {
 
 class TripService {
     static create(obj){
-        const image = new Trip(obj);
-        return image.save();
+        const trip= new Trip(obj);
+        return trip.save();
     }
 
     static update(id, data){
         return Trip.findById(id)
-        .then((image) => {
-            image.set(data);
-            image.save();
-            return image;
+        .then((trip) => {
+            trip.set(data);
+            trip.save();
+            return trip;
         });
     }
 
     static read(id){
         return Trip.findById(id)
-        .then((image)=> {
-            return image;
+        .then((trip)=> {
+            return trip;
         });
     }
 
     static list(){
         return Trip.find({})
-            .then((images)=>{
-                return images;
+            .then((trips)=>{
+                return trips;
             });
     }
 

@@ -12,8 +12,7 @@ const upload = multer({
 const TripService = imageController.TripImageService;
 
 
-//read
-//http://localhost:8086/api/trips
+//read all trips (http://localhost:8086/api/trips)
 router.get('/', async(req, res, next)=>{
     console.log('-----------In apiRouter--------------')
     try{

@@ -42,6 +42,7 @@ class TripService {
             content: obj.content
         });
         const  newTrip = await trip.save();
+        console.log(`Successfully create a new trip" ${newTrip}`)
         return newTrip
     }
 
@@ -49,7 +50,7 @@ class TripService {
         const trip = await Trip.findById(id)
         trip.set(data)
         await trip.save();
-        console.log(`Successfully create a new trip" ${trip}`)
+        console.log(`Successfully update a new trip" ${trip}`)
         return trip;
     }
 

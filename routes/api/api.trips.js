@@ -29,7 +29,7 @@ router.get('/:id', async(req, res, next) => {
 })
 
 
-// create a  trip with file upload
+// create a trip with the file upload
 router.post('/', upload.single('image'), async(req, res, next) => {
     const path ='/static/images/' + req.file.filename
     const tripData = {
@@ -52,21 +52,33 @@ router.post('/', upload.single('image'), async(req, res, next) => {
         res.json(trip);
     } catch (err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
-        res.status(500).json({error: 'Error in saving a new trip itinerary to MongoDB.'});
+        res.status(500).json({error: 'Error in creating a new trip itinerary to MongoDB.'});
         
     }
 });
 
 
-//update a single trip
+//update a single trip with the file upload
 router.put('/:id', upload.single('image'), async(req, res, next) => {
     const trip_id = req.params.id;
-    console.log(`finding id: ${trip_id}`);
+
+    // this req.body only includes text, not including the upload image file
     let tripData = req.body;
+
+    // if the user uploaded a new image, update the image file into the tripData
+    const path ='/static/images/' + req.file.filename
+    if(req.file){
+        tripData.originalname = req.file.originalname;
+        tripData.mimetype = req.file.mimetype;
+        tripData.filename = req.file.filename;
+        tripData.imageurl = path;
+        tripData.size = req.file.size / 1024 |0;
+    }
+
     try{
-        tripData = await TripService.update(trip_id, tripData)
+        const trip = await TripService.update(trip_id, tripData)
         res.status(200);
-        res.json(tripData)
+        res.json(trip)
     } catch (err){
         console.error(`Error in updating a trip ${err} `)
         res.status(500).json({error: 'Error in updating a trip to MongoDB.'});

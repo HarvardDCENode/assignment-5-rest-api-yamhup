@@ -32,6 +32,9 @@ img{
 div.card{
 	margin-bottom:2rem;
 }
+li{
+	list-style-type: none;
+}
 footer {
 	position: relative;
 	width: 100%;

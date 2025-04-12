@@ -11,6 +11,7 @@
 ---
 
 **POST method In Postman**
+URL: http://localhost:8086/api/trips
 - Select 'form-data' in Body
 - add keys
     - username (text)
@@ -25,3 +26,19 @@
 <BR>
 
 ![image](./public/images/post_method.png)
+
+
+**PUT method In Postman**
+URL: http://localhost:8086/api/trips/${trip_id}
+- Select 'form-data' in Body
+- add keys
+    - username (text)
+    - title (text)
+    - country (text)
+    - city (text)
+    - content (text)
+    - image (File)
+    - filename (text)
+- add value as text and upload the imageFile from your local computer
+<br>
+![image](./public/images/put_method.png)

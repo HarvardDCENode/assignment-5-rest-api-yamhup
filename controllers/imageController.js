@@ -55,7 +55,7 @@ class TripService {
     static async update(id, data){
         const trip = await Trip.findById(id)
         console.log(`Trying to update trip Id: ${id}`)
-        
+
         trip.set(data)
         await trip.save();
         console.log(`Successfully update a trip" ${trip}`)
@@ -64,7 +64,7 @@ class TripService {
 
 
 
-    static async delete(){
+    static async delete(id){
         const obj = await Trip.deleteOne({_id: id})
         console.log(`Successfully delete a trip: ${obj}`)
         return obj;

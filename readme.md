@@ -2,13 +2,20 @@
 
 
 
-
-- After execute POST/PUT request in Postman to create or update a trip, visit http://localhost:8086/trips in the browser to see the new trip or the updated trip.
+- Keep week4 assignment HTML Interface (by using the /routes/trips.js)
+visit http://localhost:8086/trips 
 <BR>
 
 ![image](./public/images/browser.png)
 
 ---
+
+**GET method in Postman**
+URL: http://localhost:8086/api/trips
+
+
+**GET single trip in Postman**
+URL: http://localhost:8086/api/trips/${trip_id}
 
 **POST method In Postman**
 URL: http://localhost:8086/api/trips
@@ -42,3 +49,6 @@ URL: http://localhost:8086/api/trips/${trip_id}
 - add value as text and upload the imageFile from your local computer
 <br>
 ![image](./public/images/put_method.png)
+
+**Delete method in Postman**
+URL: http://localhost:8086/api/trips/${trip_id}

@@ -26,6 +26,12 @@ class TripService {
         return trips;
     }
 
+    static async read(id){
+        const trip = await Trip.findById(id)
+        console.log(`Return a single trip: ${trip}`)
+        return trip
+    }
+
     static async create(obj){
         const path ='/static/images/' + obj.filename
         const trip = new Trip({
@@ -50,23 +56,16 @@ class TripService {
         const trip = await Trip.findById(id)
         trip.set(data)
         await trip.save();
-        console.log(`Successfully update a new trip" ${trip}`)
+        console.log(`Successfully update a trip" ${trip}`)
         return trip;
     }
 
-    static async read(id){
-        const trip = await Trip.findById(id)
-        console.log(`Return a single trip: ${trip}`)
-        return trip
-    }
 
-   
 
-    static delete(){
-        return Trip.deleteOne({_id: id})
-        .then((obj)=> {
-            return obj;
-        })
+    static async delete(){
+        const obj = await Trip.deleteOne({_id: id})
+        console.log(`Successfully delete a trip: ${obj}`)
+        return obj;
     }
 }
 

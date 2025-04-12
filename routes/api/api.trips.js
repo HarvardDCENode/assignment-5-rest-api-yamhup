@@ -10,8 +10,6 @@ const upload = multer({
 });
 
 
-
-
 //read all trips (http://localhost:8086/api/trips)
 router.get('/', async(req, res, next)=>{
     try{
@@ -26,9 +24,13 @@ router.get('/', async(req, res, next)=>{
 })
 
 //read a single trip
+router.get('/:id', async(req, res, next) => {
+   res.send('ok')
+})
 
-// create a single trip with file upload
-router.post('/', upload.single('image'),async(req, res, next) => {
+
+// create a  trip with file upload
+router.post('/', upload.single('image'), async(req, res, next) => {
     const path ='/static/images/' + req.file.filename
     const tripData = {
     originalname: req.file.originalname,
@@ -54,9 +56,30 @@ router.post('/', upload.single('image'),async(req, res, next) => {
         
     }
 });
+
+
 //update a single trip
+router.put('/:id', upload.single('image'), async(req, res, next) => {
+    const trip_id = req.params.id;
+    console.log(`finding id: ${trip_id}`);
+    let tripData = req.body;
+    try{
+        tripData = await TripService.update(trip_id, tripData)
+        res.status(200);
+        res.json(tripData)
+    } catch (err){
+        console.error(`Error in updating a trip ${err} `)
+        res.status(500).json({error: 'Error in updating a trip to MongoDB.'});
+    }
+
+})
+
 
 //delete a single trip
+router.delete('/:id', async(req, res, next) =>{
+    res.send('ok')
+})
+
 
 //error handling
 router.use(function(err, req, res, next){

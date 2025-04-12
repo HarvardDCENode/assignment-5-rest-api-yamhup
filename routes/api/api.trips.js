@@ -78,6 +78,7 @@ router.post('/', upload.single('image'), async(req, res, next) => {
 //updated one specific trip itinerary  with the file upload
 router.put('/:id', upload.single('image'), async(req, res, next) => {
     const trip_id = req.params.id;
+    
 
     // this req.body only includes text, not including the upload image file
     let tripData = req.body;
@@ -93,7 +94,7 @@ router.put('/:id', upload.single('image'), async(req, res, next) => {
     }
 
     try{
-        const trip = await TripService.update(trip_id, tripData)
+        const trip = await TripService.update(trip_id, tripData);
         res.status(200);
         res.json(trip)
     } catch(err){
@@ -108,8 +109,17 @@ router.put('/:id', upload.single('image'), async(req, res, next) => {
 
 //delete a single trip
 router.delete('/:id', async(req, res, next) =>{
-    let id =
-    res.send('ok')
+    let id = req.params.id;
+    try {
+        const trip = await TripService.delete(id)
+        console.log(`Delete trip Id: ${id}`)
+        res.status(200);
+        res.json(trip);
+    } catch (err){
+        res.status(404).json({
+            error: `Error in deleting the trip id ${id}`
+        });
+    }
 })
 
 

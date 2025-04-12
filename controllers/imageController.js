@@ -54,6 +54,8 @@ class TripService {
 
     static async update(id, data){
         const trip = await Trip.findById(id)
+        console.log(`Trying to update trip Id: ${id}`)
+        
         trip.set(data)
         await trip.save();
         console.log(`Successfully update a trip" ${trip}`)

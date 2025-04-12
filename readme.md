@@ -5,6 +5,7 @@
 
 - After execute POST/PUT request in Postman to create or update a trip, visit http://localhost:8086/trips in the browser to see the new trip or the updated trip.
 <BR>
+
 ![image](./public/images/browser.png)
 
 ---

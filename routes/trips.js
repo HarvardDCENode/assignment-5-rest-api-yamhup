@@ -83,7 +83,7 @@ router.post('/:tripid',upload.single('image'), (req, res, next)=> {
 
     trip.set(data);
     trip.save().then(()=> {
-      console.log(res.deletedCount)
+
       res.redirect('/trips')
     });
   })

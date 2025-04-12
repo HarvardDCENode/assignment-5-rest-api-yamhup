@@ -75,14 +75,14 @@ router.post('/', upload.single('image'), async(req, res, next) => {
 });
 
 
-//update a single trip with the file upload
+//updated one specific trip itinerary  with the file upload
 router.put('/:id', upload.single('image'), async(req, res, next) => {
     const trip_id = req.params.id;
 
     // this req.body only includes text, not including the upload image file
     let tripData = req.body;
 
-    // if the user uploaded a new image, update the image file into the tripData
+    // if the user uploaded a new image, update the image file into the tripData object
     const path ='/static/images/' + req.file.filename
     if(req.file){
         tripData.originalname = req.file.originalname;
@@ -108,6 +108,7 @@ router.put('/:id', upload.single('image'), async(req, res, next) => {
 
 //delete a single trip
 router.delete('/:id', async(req, res, next) =>{
+    let id =
     res.send('ok')
 })
 

@@ -66,7 +66,7 @@ class TripService {
 
     static async delete(id){
         const obj = await Trip.deleteOne({_id: id})
-        console.log(`Successfully delete a trip: ${obj}`)
+        console.log(`Successfully delete a trip Id: ${id}`)
         return obj;
     }
 }

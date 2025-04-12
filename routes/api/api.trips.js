@@ -112,7 +112,6 @@ router.delete('/:id', async(req, res, next) =>{
     let id = req.params.id;
     try {
         const trip = await TripService.delete(id)
-        console.log(`Delete trip Id: ${id}`)
         res.status(200);
         res.json(trip);
     } catch (err){

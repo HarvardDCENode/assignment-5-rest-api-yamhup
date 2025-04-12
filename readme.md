@@ -1,6 +1,7 @@
 #### Assignment #5 - REST APIs
 
-
+- Client-side test file ?
+    ... 
 
 - Keep week4 assignment HTML Interface (by using the /routes/trips.js)
 visit http://localhost:8086/trips 

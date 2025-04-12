@@ -16,16 +16,31 @@ router.get('/', async(req, res, next)=>{
         const trips = await TripService.list()
         res.status(200);
         res.json(trips);
-    } catch (err){
+    } catch(err){
         console.error(`Error in retrieving trips from MongoDB, ${err}`);
-        //display error message in Postman Body
-        res.status(500, json({error: 'Error in retrieving trips from MongoDB'}));
+        //display error message in Postman Body using 
+        //res.status(500).json({ error: 'message' }) - from https://expressjs.com/en/api.html#res.json
+        res.status(500).json({
+            error: 'Error in retrieving trips from MongoDB'
+        });
     }
 })
 
 //read a single trip
 router.get('/:id', async(req, res, next) => {
-   res.send('ok')
+    console.log(`trip id: ${req.params.id}`)
+    try {
+        const trip = await TripService.read(req.params.id)
+        res.status(200);
+        res.json(trip);
+    } catch(err){
+        console.log(`Error in finding the trip ${req.params.id} from MongoDB, ${err}`)
+        res.status(404).json({
+            error:'Error in finding the trip.'
+        });
+        
+    }
+
 })
 
 
@@ -50,9 +65,11 @@ router.post('/', upload.single('image'), async(req, res, next) => {
         const trip = await TripService.create(tripData);
         res.status(201);
         res.json(trip);
-    } catch (err){
+    } catch(err){
         console.error(`Error in saving a new trip itinerary: ${err}`);
-        res.status(500).json({error: 'Error in creating a new trip itinerary to MongoDB.'});
+        res.status(500).json({
+            error: 'Error in creating a new trip itinerary to MongoDB.'
+        });
         
     }
 });
@@ -79,9 +96,11 @@ router.put('/:id', upload.single('image'), async(req, res, next) => {
         const trip = await TripService.update(trip_id, tripData)
         res.status(200);
         res.json(trip)
-    } catch (err){
+    } catch(err){
         console.error(`Error in updating a trip ${err} `)
-        res.status(500).json({error: 'Error in updating a trip to MongoDB.'});
+        res.status(500).json({
+            error: 'Error in updating a trip to MongoDB.'
+        });
     }
 
 })

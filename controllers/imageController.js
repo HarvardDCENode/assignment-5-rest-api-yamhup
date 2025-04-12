@@ -54,11 +54,10 @@ class TripService {
         return trip;
     }
 
-    static read(id){
-        return Trip.findById(id)
-        .then((trip)=> {
-            return trip;
-        });
+    static async read(id){
+        const trip = await Trip.findById(id)
+        console.log(`Return a single trip: ${trip}`)
+        return trip
     }
 
    

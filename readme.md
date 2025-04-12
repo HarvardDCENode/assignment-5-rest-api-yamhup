@@ -1,14 +1,12 @@
 #### Assignment #5 - REST APIs
 
-- Client-side test file ?
-visited http://localhost:8086/static/index.html
-   
+- Client-side test file for testing the REST APIs
+    - visited http://localhost:8086/static/index.html 
+   ![image](./public/images/cilent_side_testing.png)
 
-- Keep week4 assignment HTML Interface (by using the /routes/trips.js)
-visit http://localhost:8086/trips 
-<BR>
-
-![image](./public/images/browser.png)
+- Week4 assignment HTML Interface (by using the /routes/trips.js) still functional and handy
+    -visit http://localhost:8086/trips 
+    ![image](./public/images/browser.png)
 
 ---
 
@@ -31,9 +29,6 @@ URL: http://localhost:8086/api/trips
     - image (File)
     - filename (text)
 - add value as text and upload the imageFile from your local computer
-
-<BR>
-
 ![image](./public/images/post_method.png)
 
 
@@ -49,7 +44,6 @@ URL: http://localhost:8086/api/trips/${trip_id}
     - image (File)
     - filename (text)
 - add value as text and upload the imageFile from your local computer
-<br>
 ![image](./public/images/put_method.png)
 
 **Delete method in Postman**

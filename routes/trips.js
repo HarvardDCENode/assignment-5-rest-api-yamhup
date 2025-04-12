@@ -83,7 +83,6 @@ router.post('/:tripid',upload.single('image'), (req, res, next)=> {
 
     trip.set(data);
     trip.save().then(()=> {
-
       res.redirect('/trips')
     });
   })

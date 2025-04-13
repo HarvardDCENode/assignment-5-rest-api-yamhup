@@ -1,5 +1,4 @@
 // Reference from week9 -09.1-express-rest-api "api-async-await.js" file
-
 (function(){
     const baseURL  = 'http://142.93.159.245:8086';
     // const baseURL  = 'http://localhost:8086';
@@ -53,11 +52,6 @@
             //DELETE 
             let deleteTrip = await callAPI('DELETE', `/api/trips/${fetchedNewTrip._id}`, null, null);
             console.log(deleteTrip);
-
-
-
-
-
         } catch(err){
             console.error(`Error: ${err}}`)
         }
@@ -67,7 +61,7 @@
     async function callAPI(method, uri, params, body){
         jsonMimeType = {
             'Content-type':'application/json'
-           }
+        }
         try{
             const response = await fetch(baseURL + uri, {
                 method: method,

@@ -48,4 +48,4 @@ URL: http://142.93.159.245:8086/api/trips/${trip_id}
 ![image](./public/images/put_method.png)
 
 **Delete method in Postman**
-URL: http://localhost:8086/api/trips/${trip_id}
+URL: http://142.93.159.245:8086/api/trips/${trip_id}

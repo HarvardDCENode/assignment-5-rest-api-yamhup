@@ -40,7 +40,6 @@ router.get('/:id', async(req, res, next) => {
         });
         
     }
-
 })
 
 
@@ -60,7 +59,6 @@ router.post('/', upload.single('image'), async(req, res, next) => {
     city: req.body.city,
     content: req.body.content
     }
-
     try {
         const trip = await TripService.create(tripData);
         res.status(201);
@@ -70,7 +68,6 @@ router.post('/', upload.single('image'), async(req, res, next) => {
         res.status(500).json({
             error: 'Error in creating a new trip itinerary to MongoDB.'
         });
-        
     }
 });
 
@@ -79,7 +76,6 @@ router.post('/', upload.single('image'), async(req, res, next) => {
 router.put('/:id', upload.single('image'), async(req, res, next) => {
     const trip_id = req.params.id;
     
-
     // this req.body only includes text, not including the upload image file
     let tripData = req.body;
 

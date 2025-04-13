@@ -1,7 +1,7 @@
 // Reference from week9 -09.1-express-rest-api "api-async-await.js" file
 
 (function(){
-    const baseURL  = 'http://localhost:8086';
+    const baseURL  = 'http://142.93.159.245:8086';
 
     async function testAPIs(){
         try{

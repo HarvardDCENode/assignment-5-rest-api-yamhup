@@ -23,15 +23,28 @@
 
             // create a new trip
             let newTrip = await callAPI('POST', '/api/trips', null, data)
-            const tripId = newTrip._id;
-            console.log(`\n\n---------Create a new trip Trip Id:${tripId}------------\n`);
+            console.log(`\n\n---------Create a new trip Trip Id:${newTrip._id}  results------------\n`);
             console.log(newTrip)
 
             //find the new created trip
-            let fetchedNewTrip = await callAPI('GET', `/api/trips/${newTrip._id}`, null, null)
-            console.log(newTrip._id, typeof newTrip._id)
-            console.log('\n\n------Find latest created trip-----\n')
-            console.log(fetchedNewTrip)
+            let fetchedNewTrip = await callAPI('GET', `/api/trips/${newTrip._id}`, null, null);
+            console.log('\n\n------Find obj results -----\n');
+            console.log(fetchedNewTrip);
+
+            //update trip itinerary's username/title/country/city/content by creating a new obj
+            const updatedFields ={
+                username: fetchedNewTrip.username + ' appended another username by AJAX API',
+                title: fetchedNewTrip.title + ' appended another title by AJAX API',
+                country: fetchedNewTrip.country + ' appended another country by AJAX API',
+                city: fetchedNewTrip.city + ' appended another city by AJAX API',
+                content: fetchedNewTrip.content + ' appended another content by AJAX API',
+            }
+
+
+            let updatedTrip = await callAPI('PUT', `/api/trips/${fetchedNewTrip._id}`, null, updatedFields);
+            console.log('\n\n ------ Update results ------ \n');
+            console.log(updatedTrip);
+
 
 
 
@@ -43,14 +56,19 @@
     };
 
     async function callAPI(method, uri, params, body){
+        jsonMimeType = {
+            'Content-type':'application/json'
+           }
         try{
             const response = await fetch(baseURL + uri, {
                 method: method,
-                ...(method == 'POST' ? {body:body}: {})
+                ...(method == 'POST' ? {body:body}: {}),
+                ...(method == 'PUT' ?  {headers: jsonMimeType, body:JSON.stringify(body)} : {})
             });
             return response.json();
         }catch(err){
             console.error(`Error: ${err}`);
+            return "{'status':'error'}";
             
         }
         

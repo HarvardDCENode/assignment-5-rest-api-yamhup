@@ -84,12 +84,11 @@ router.put('/:id', upload.single('image'), async(req, res, next) => {
     let tripData = req.body;
 
     // if the user uploaded a new image, update the image file into the tripData object
-    const path ='/static/images/' + req.file.filename
     if(req.file){
         tripData.originalname = req.file.originalname;
         tripData.mimetype = req.file.mimetype;
         tripData.filename = req.file.filename;
-        tripData.imageurl = path;
+        tripData.imageurl = '/static/images/' + req.file.filename;
         tripData.size = req.file.size / 1024 |0;
     }
 

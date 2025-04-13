@@ -2,6 +2,7 @@
 
 (function(){
     const baseURL  = 'http://142.93.159.245:8086';
+    // const baseURL  = 'http://localhost:8086';
 
     async function testAPIs(){
         try{

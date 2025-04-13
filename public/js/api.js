@@ -7,7 +7,7 @@
         try{
             // displays all trips
             let list = await callAPI('GET', '/api/trips', null, null );
-            console.log('\n---------Return trip list------------\n');
+            console.log('\n\n---------Return trip list------------\n');
             console.log(list);
 
             //creates a trip itinerary and uploads an image
@@ -21,10 +21,19 @@
             data.append('city', 'Testing API city');
             data.append('content', 'This is an AJAX API test');
 
+            // create a new trip
             let newTrip = await callAPI('POST', '/api/trips', null, data)
-            tripId = newTrip._id;
-            console.log('\n---------Create a new trip ------------\n');
+            const tripId = newTrip._id;
+            console.log(`\n\n---------Create a new trip Trip Id:${tripId}------------\n`);
             console.log(newTrip)
+
+            //find the new created trip
+            let fetchedNewTrip = await callAPI('GET', `/api/trips/${newTrip._id}`, null, null)
+            console.log(newTrip._id, typeof newTrip._id)
+            console.log('\n\n------Find latest created trip-----\n')
+            console.log(fetchedNewTrip)
+
+
 
 
         } catch(err){

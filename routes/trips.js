@@ -128,7 +128,6 @@ router.post('/', upload.single('image'),(req, res, next)=> {
   };
   const trip = new Trip(tripData);
   trip.save()
-  console.log(trip)
   .then(() => {
     console.log('trip saved:',path);
     res.redirect('/trips');

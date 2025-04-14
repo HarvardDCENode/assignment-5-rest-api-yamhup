@@ -6,7 +6,7 @@
     async function testAPIs(){
         try{
             //READ: displays all trips
-            let list = await callAPI('GET', '/api/trips', null, null );
+            let list = await callAPI('GET', '/api/trips', null);
             console.log('\n\n---------Return trip list------------\n');
             console.log(list);
 
@@ -22,12 +22,12 @@
             data.append('content', 'Demo API created content');
 
             //CREATE: create a new trip
-            let newTrip = await callAPI('POST', '/api/trips', null, data);
+            let newTrip = await callAPI('POST', '/api/trips', data);
             console.log(`\n\n-------- Create a new trip(trip Id:${newTrip._id})  results -----\n`);
             console.log(newTrip);
 
             //READ ONE: find the new created trip
-            let fetchedNewTrip = await callAPI('GET', `/api/trips/${newTrip._id}`, null, null);
+            let fetchedNewTrip = await callAPI('GET', `/api/trips/${newTrip._id}`, null);
             console.log(`\n\n-------- Result of latest trip(trip Id:${newTrip._id}) -----\n`);
             console.log(fetchedNewTrip);
 
@@ -40,17 +40,17 @@
                 content: fetchedNewTrip.content + ' ➕demo API append content:💬',
             }
             //UPDATE
-            let updatedTrip = await callAPI('PUT', `/api/trips/${fetchedNewTrip._id}`, null, updatedFields);
+            let updatedTrip = await callAPI('PUT', `/api/trips/${fetchedNewTrip._id}`, updatedFields);
             console.log('\n\n-------- Update results -----\n');
             console.log(updatedTrip);
 
             //READ ONE UPDATED TRIP
-            let fetchedUpdatedTrip = await callAPI('GET', `/api/trips/${fetchedNewTrip._id}`, null, null);
+            let fetchedUpdatedTrip = await callAPI('GET', `/api/trips/${fetchedNewTrip._id}`, null);
             console.log('\n\n-------- Find updated results -----\n')
             console.log(fetchedUpdatedTrip);
 
             //DELETE 
-            let deleteTrip = await callAPI('DELETE', `/api/trips/${fetchedNewTrip._id}`, null, null);
+            let deleteTrip = await callAPI('DELETE', `/api/trips/${fetchedNewTrip._id}`,null);
             console.log(deleteTrip);
         } catch(err){
             console.error(`Error: ${err}}`)
@@ -58,7 +58,7 @@
         
     };
 
-    async function callAPI(method, uri, params, body){
+    async function callAPI(method, uri, body){
         jsonMimeType = {
             'Content-type':'application/json'
         }

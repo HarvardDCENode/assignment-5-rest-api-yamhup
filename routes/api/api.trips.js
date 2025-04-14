@@ -12,8 +12,8 @@ const TripService = imageController.TripService;
 router.use((req, res, next) => {
     res.set({
         'Access-Control-Allow-Origin':'*',
-        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,OPTIONS',
-        // "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers",
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,OPTIONS',
+        "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers",
         'Content-type': 'application/json'
     });
     if(req.method == 'OPTIONS') {

@@ -8,7 +8,7 @@ const upload = multer({
 });
 const TripService = imageController.TripService;
 
-
+// set CORS headers
 router.use((req, res, next) => {
     res.set({
         'Access-Control-Allow-Origin':'*',

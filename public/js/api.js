@@ -77,7 +77,7 @@
     }
 
     document.querySelector('#test-button').addEventListener("click", ()=> {
-        console.log("Test API button been clicked.")
+        console.log("Test API button been is clicked.")
         let upload = document.querySelector('input[type="file"]')
         if (upload.value){
             testAPIs();

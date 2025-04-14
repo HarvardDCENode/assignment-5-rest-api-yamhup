@@ -2,13 +2,25 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const imageController = require('../../controllers/imageController');
-const TripService = imageController.TripService;
-const Trip = require('../../models/tripModels');
 const upload = multer({
   storage: imageController.storage,
   fileFilter: imageController.imageFilter
 });
+const TripService = imageController.TripService;
 
+
+router.use((req, res, next) => {
+    res.set({
+        'Access-Control-Allow-Origin':'*',
+        // 'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,OPTIONS',
+        // "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers",
+        'Content-type': 'application/json'
+    });
+    if(req.method == 'OPTIONS') {
+        return res.status(200).end();
+    }
+    next();
+});
 
 //read all trips (http://localhost:8086/api/trips)
 router.get('/', async(req, res, next)=>{
